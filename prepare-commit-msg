@@ -3,13 +3,13 @@
 message_file = ARGV[0]
 message = File.read(message_file)
 
-$regex = /.+:.+#\d+/
+$regex = /.*Issue #\d+ .+:.+/
 
 if !$regex.match(message)
   puts "[ERROR] Invalid Commit Message"
   puts "The  commit messages should be  in the below format: "
-  puts "<Type>:<Commit message>#<Issue id>"
+  puts "Issue #<Issue id> <Type>:<Commit message>"
   puts "Example:"
-  puts "feat:Setting up hooks #121"
+  puts "Issue #121 feat:Setting up hooks"
  exit 1
 end
